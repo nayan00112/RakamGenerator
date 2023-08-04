@@ -1,0 +1,162 @@
+<!-- By Nayan Patel, 31 July, 2023 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Generator</title>
+    <script>
+        var j = 1
+        // Defaule Value
+        var oper = "Plus"
+        var dig1 = 2
+        var dig2 = 2
+
+        function fun() {
+            oper = document.querySelector("#Op").value
+            dig1 = Number(document.querySelector("#Di1").value)
+            dig2 = Number(document.querySelector("#Di2").value)
+            var mulFact1 = Math.pow(10, dig1)
+            var mulFact2 = Math.pow(10, dig2)
+            var x = Math.floor(Math.random() * mulFact1)
+            var y = Math.floor(Math.random() * mulFact2)
+
+            console.log(oper);
+            switch (oper) {
+                case "Plus":
+                    var z = ("(" + j + ") " + x.toString() + " + " + y.toString() + " = " + (x + y))
+                    break
+                case "Minus":
+                    var z = ("(" + j + ") " + x.toString() + " - " + y.toString() + " = " + (x - y))
+                    break
+                case "Multiplication":
+                    var z = ("(" + j + ") " + x.toString() + " * " + y.toString() + " = " + (x * y))
+                    break
+                case "division":
+                    if (y == 0) { y = 3 }
+                    var z = ("(" + j + ") " + x.toString() + " / " + y.toString() + " = " + (x / y))
+                    break
+                case "Pow":
+                    var z = ("(" + j + ") " + x.toString() + " ^ " + y.toString() + " = " + (Math.pow(x, y)))
+                    break
+                default:
+                    alert("Sorry, Somthing going wrong!")
+            }
+            j = j + 1
+            var p = document.createElement("p")
+            var data = document.createTextNode(z);
+            p.append(data)
+            var div_tag = document.getElementById("disp")
+            div_tag.appendChild(p)
+        }
+
+        function printpage() {
+            window.print()
+        }
+
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            padding: 12px;
+            color: #D8DDE3;
+            background-color: #24292f;
+        }
+
+        #disp {
+            width: 98%;
+            margin: auto;
+        }
+
+        p {
+            padding: 20px;
+            background-color: #161B21;
+            border: 1px solid #161B21;
+        }
+
+        h1 {
+            font-weight: lighter;
+            font-size: 3rem;
+        }
+
+        li {
+            display: inline;
+        }
+
+        ul {
+            display: block;
+            padding: 0;
+        }
+
+        button {
+            background-color: #21262c;
+            border: 1px solid #6a7889;
+            color: #6a7889;
+            padding: 20px;
+            width: 100%;
+            margin: auto;
+            font-size: large;
+        }
+
+        .cont {
+            height: 100vh;
+        }
+
+        small {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 98%; margin: auto;">
+        <div>
+            <h1>RANDOM MATH EQUATATION<br>GENERATOR</h1>
+            <ul>
+                <li>
+                    <label for="Op">Operator</label>
+                    <select name="Operator" id="Op">
+                        <option value="Plus"> + (Plus)</option>
+                        <option value="Minus"> - (Minus)</option>
+                        <option value="Multiplication"> * (Multiplication)</option>
+                        <option value="division"> / (division)</option>
+                        <option value="Pow"> ^ (Pow)</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="Di1">Digit 1: </label>
+                    <select name="digit1" id="Di1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="Di2">Digit 2: </label>
+                    <select name="digit2" id="Di2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div style="width: 98%; padding-bottom: 20px; padding-top: 20px;">
+            <small>Created By Nayan Patel &#169; 2023</small>
+        </div>
+        <button onclick="printpage()">Print</button>
+    </div>
+    <div class="cont" onclick="fun()" onkeypress="fun()">
+        <div id="disp"></div>
+    </div>
+
+</body>
+
+</html>
